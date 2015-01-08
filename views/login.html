@@ -1,0 +1,19 @@
+<article class="middle login-container">
+	<form class="login" ng-submit="login(user, pass)">
+		<div ng-show="errorMessage" class="alert alert__error">
+			{{ errorMessage }} 
+		</div>
+
+		<div class="form-row">
+			<label>User</label>
+			<input type="text" ng-model="user" />
+		</div>
+		<div class="form-row">
+			<label>Password</label>
+			<input type="password" ng-model="pass" />
+		</div>
+		<div class="form-row">
+			<button class="btn" type="submit">Login</button>
+		</div>
+	</form>
+</article>

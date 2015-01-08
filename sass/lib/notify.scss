@@ -1,0 +1,90 @@
+.cg-notify-message {
+    position:fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 9999;
+    width: 380px;
+    text-align: center;
+    margin-bottom: 0;
+
+    -webkit-transition: top 0.5s ease-out,opacity 0.2s ease-out;
+    -moz-transition: top 0.5s ease-out,opacity 0.2s ease-out;
+    -o-transition: top 0.5s ease-out,opacity 0.2s ease-out;
+    transition: top 0.5s ease-out,opacity 0.2s ease-out;    
+
+    visibility:hidden;
+    background-color: #323232;
+    color: #fff;
+    min-height: 48px;
+    padding-left: 24px;
+    padding-right: 24px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    border-radius: 2px;
+    font-size: 16px;
+    cursor: default;
+    max-width: 879px;
+    max-height: 40px;
+    height: 24px;
+    align-items: center;
+    display: flex;
+}
+
+.cg-notify-message--error {
+    background: $dangerColor;
+}
+
+.cg-notify-message--success {
+    background: $successColor;
+}
+
+
+.cg-notify-message--warning {
+    background: $warningColor;
+}
+
+.cg-notify-message a {
+    font-weight:bold;
+    color:inherit;
+}
+
+.cg-notify-message a:hover {
+    color:inherit;
+}
+
+.cg-notify-close {
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .8;
+
+    position: absolute;
+    top: 0px;
+    right: 3px;
+    line-height: 15px;    
+}
+
+.cg-notify-close:hover, .cg-notify-close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    filter: alpha(opacity=50);
+    opacity: .5;
+}
+
+.cg-notify-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}

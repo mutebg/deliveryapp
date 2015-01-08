@@ -1,0 +1,21 @@
+.btn {
+	background-color: $activeColor;
+	display: inline-block;
+	padding: 5px;
+	border-radius: 2px;
+	border: 0;
+	color: #fff;
+	cursor: pointer;
+}
+
+.btn--success {
+	background-color: $successColor;
+}
+
+.btn--danger {
+	background-color: $dangerColor;
+}
+
+.btn--default {
+	background: #fff;
+}

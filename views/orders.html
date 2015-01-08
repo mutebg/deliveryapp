@@ -1,0 +1,89 @@
+<article class="middle">
+	<div class="page-header">
+	 	<h1 class="page-header__title">Orders</h1>
+	 	<div class="page-header__actions">
+	 		<button class="btn">Filter by <i class="fa fa-sort"></i></button>
+	 		<input type="search" ng-model="search" placeholder="Search" />
+	 	</div>
+	</div>	
+	
+	<div class="content">
+		<table class="table">
+			<tr>
+				<th ng-click="sortColumn = '_id'; 		reverse = !reverse" width="190">#</th>
+				<th ng-click="sortColumn = 'name'; 		reverse = !reverse">Name</th>
+				<th ng-click="sortColumn = 'from'; 		reverse = !reverse">From</th>
+				<th ng-click="sortColumn = 'to'; 		reverse = !reverse">To</th>
+				<th ng-click="sortColumn = 'date_add';	reverse = !reverse">Date</th>
+				<th>Action</th>
+			</tr>
+			<tr ng-repeat="o in orders | filter:search |  orderBy:sortColumn:reverse">
+				<td>{{ o._id }}</td>
+				<td>{{ o.name }}</td>
+				<td>{{ o.from }}</td>
+				<td>{{ o.to }}</td>
+				<td>{{ o.date }}</td>
+				<td width="90">
+					<button ng-click="view(o._id)" class="btn">view</button>
+					<button ng-click="prepareToDelivery(o)" class="btn" ng-hide="o.status > 0">add</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+</article>
+
+<aside class="aside">
+	
+	<tabs selected="{{selectedTab}}">
+	    <pane title="Delivery" icon="shopping-cart">
+	    	<div ng-show=" deliveryPrepare.length > 0 ">
+				<table class="delivery-list">
+					<tr>
+						<th>Address</th>
+						<th>#</th>
+					</tr>
+					<tr ng-repeat="d in deliveryPrepare">
+						<td>{{ d.to }}</td>
+						<td>{{ d._id }}</td>
+					</tr>
+				</table>
+				<div class="form-row">
+					<label>From</label>
+					<select ng-options="office.address as office.label for office in offices" ng-model="deliveryfrom"></select>
+				</div>
+				<button class="btn" ng-click="prepare()">Prepare</button>
+			</div>	
+	    </pane>
+	    <pane title="View order" icon="clipboard">
+			<div class="form-row">
+				<label>Name</label>
+				<strong>{{viewOrder.name}}</strong>
+			</div>
+			<div class="form-row">
+				<label>From</label>
+				<strong>{{viewOrder.from}}</strong>
+			</div>
+			<div class="form-row">
+				<label>To</label>
+				<strong>{{viewOrder.to}}</strong>
+			</div>
+			<div class="form-row">
+				<label>Date/Time</label>
+				<strong>{{viewOrder.date_add}}</strong>
+			</div>
+			<table>
+				<tr>
+					<td>Product</td>
+					<td>Price</td>
+					<td>Qty</td>
+				</tr>
+				<tr ng-repeat="p in viewOrder.products">
+					<td>{{ p.id.name }}</td>
+					<td>{{ p.id.price }}</td>
+					<td>{{ p.qty }}</td>
+				</tr>
+			</table>
+	    </pane>
+	</tabs>    
+
+</aside>

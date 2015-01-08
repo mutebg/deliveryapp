@@ -1,0 +1,110 @@
+<article class="middle">
+	<div class="page-header">
+	 	<h1 class="page-header__title">Products</h1>
+	 	<div class="page-header__actions">
+	 		<button class="btn">Filter by <i class="fa fa-sort"></i></button>
+	 		<input type="search" ng-model="search" placeholder="Search" />
+	 	</div>
+	</div>	
+	
+	<div class="content">
+		<table class="table">
+			<tr>
+				<th ng-click="sortColumn = '_id'; 		reverse = !reverse" width="190">#</th>
+				<th ng-click="sortColumn = 'name'; 		reverse = !reverse">Name</th>
+				<th ng-click="sortColumn = 'price'; 	reverse = !reverse" width="50">Qty</th>
+				<th ng-click="sortColumn = 'qty'; 		reverse = !reverse" width="50">Price</th>
+				<th width="110">Action</th>
+			</tr>
+			<tr ng-repeat="product in products | filter:search |  orderBy:sortColumn:reverse">
+				<td>{{ product._id }}</td>
+				<td class="name">{{ product.name }}</td>
+				<td class="qty">{{ product.qty }}</td>
+				<td class="price">{{ product.price }}</td>
+				<td width="50">
+					<button ng-click="addToBasket(product)" ng-show=" product.qty > 0 " class="btn">
+						<i class="fa fa-plus-circle"></i> Add</button>
+					<button ng-click="startEditing(product)" class="btn btn--success"><i class="fa fa-info-circle"></i></button>
+					<button ng-click="remove(product)" class="btn btn--danger"><i class="fa fa-times-circle"></i></button>
+				</td>
+			</tr>
+		</table>
+	</div>
+</article>
+
+<aside class="aside">
+	<tabs selected="{{selectedTab}}">
+	    <pane title="Basket" icon="shopping-cart">
+	  		<form ng-show="order.products.length" ng-submit="makeOrder(order)">
+				<table class="basket">
+					<tr ng-repeat="b in order.products" class="basket__row">
+						<td class="basket__product">{{ b.name }}</td>
+						<td class="basket__qty">{{ b.order_qty }}</td>
+						<td class="basket__price">({{b.price }})</td> 
+						<td class="basket__total">{{ b.price * b.order_qty }}</td>
+					</tr>
+					<tr>
+						<td>Total</td>
+						<td>{{ order.totalBasket }}</td>
+					</tr>
+				</table>
+			
+				<div class="form-row">
+					<label>Destination</label>
+					<input type="text" ng-model="order.to" />
+				</div>
+				<div class="form-row">
+					<label>From</label>
+					<select ng-options="office.address as office.label for office in offices" ng-model="order.from"></select>
+				</div>
+				<div class="form-row">
+					<label>Name</label>
+					<input type="text" ng-model="order.name" />
+				</div>
+				<button type="submit" class="btn">Make order</button>
+			</form>
+			<div ng-hide="order.products.length" class="alert alert--warning">Empty basket</div>
+	    </pane>
+
+	    <pane title="Add product" icon="cube">
+	    	<form ng-submit="add(formAdd)">
+	    		<div class="form-row">
+					<label>Name</label>
+					<input type="text" ng-model="formAdd.name" />
+				</div>
+				<div class="form-row form-row--half">
+					<label>Qty</label>
+					<input type="number" ng-model="formAdd.qty" />
+				</div>
+				<div class="form-row form-row--half">
+					<label>Price</label>
+					<input type="number" ng-model="formAdd.price" />
+				</div>
+				<div class="form-row">
+					<button class="btn" type="submit" id="btn-add-product">Add product</button>
+				</div>
+			</form>
+		</pane>
+
+		<pane title="Edit product" icon="cubes">
+			<form ng-submit="edit(formEdit)">
+			 	<div class="form-row">
+					<label>Name</label>
+					<input type="text" ng-model="formEdit.name" 	class="edit-name"/>
+				</div>
+				<div class="form-row form-row--half">
+					<label>Qty</label>
+					<input type="number" ng-model="formEdit.qty" 	class="edit-qty"/>
+				</div>
+				<div class="form-row form-row--half">
+					<label>Price</label>
+					<input type="number" ng-model="formEdit.price" 	class="edit-price"/>
+				</div>
+				<div class="form-row">
+					<button class="btn" type="submit" id="btn-edit-product">Edit product</button>
+				</div>
+
+			</form>	
+		</pane>
+  	</tabs>
+</aside>
