@@ -1,5 +1,4 @@
-function UserFactory($http, AuthTokenFactory, $q) {
-
+function UserFactory($http, AuthTokenFactory) {
     
     function login(username, password) {
         return $http.post( _config['domain'] + 'login', {
@@ -19,7 +18,6 @@ function UserFactory($http, AuthTokenFactory, $q) {
         login: login,
         logout: logout
     };
-
 }
 
 angular

@@ -1,7 +1,5 @@
 var _config = {};
 _config['domain'] 	= 'http://localhost:3003/';
-_config['user'] 	= '';
-_config['token'] 	= '';
 _config['nav']		= [
 	{link: 'home', 		label: 'Dashboard',	icon: 'tasks'},
 	{link: 'products', 	label: 'Products', 	icon: 'cubes'},

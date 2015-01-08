@@ -1,14 +1,18 @@
 function LoginCtrl($scope, $location, UserFactory) {
+	
+	function login(username, password) {
+		UserFactory.login(username, password).then(function success(response) {
+			$location.path('home');
+		}, function(error) {
+			$scope.errorMessage = error.data;
+		});
+	}
+	
+	//properties
 	$scope.errorMessage = '';
 
-
-	$scope.login = function(username, password) {
-		UserFactory.login($scope.user, $scope.pass).then(function success(response) {
-        	$location.path('home');	
-      	}, function(error){
-      		$scope.errorMessage = error.data;
-      	});
-	}
+	//methods
+	$scope.login = login;
 }
 
 angular

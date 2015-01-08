@@ -1,8 +1,7 @@
 function AuthTokenFactory($window) {
+    
     var store = $window.localStorage;
     var key = 'auth-token';
-
-    
 
     function getToken() {
         return store.getItem(key);

@@ -1,4 +1,5 @@
 function TransferService() {
+	
 	var data = {};
 
 	function add (key, item) {
@@ -14,7 +15,6 @@ function TransferService() {
         get: get
     };
 }
-
 
 angular
 	.module('delivery')

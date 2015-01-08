@@ -1,7 +1,9 @@
 angular
    .module('delivery', ['ngRoute', 'ngResource', 'cgNotify'])
    .config(function ($routeProvider, $httpProvider) {
+
       $httpProvider.interceptors.push('AuthInterceptor');
+      
       $routeProvider
          .when('/', {
             templateUrl: 'views/login.html',

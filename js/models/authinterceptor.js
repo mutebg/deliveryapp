@@ -1,7 +1,4 @@
 function AuthInterceptor(AuthTokenFactory) {
-    return {
-        request: addToken
-    };
 
     function addToken(config) {
         var token = AuthTokenFactory.getToken();
@@ -11,6 +8,10 @@ function AuthInterceptor(AuthTokenFactory) {
         }
         return config;
     }
+
+    return {
+        request: addToken
+    };
 }
 
 angular

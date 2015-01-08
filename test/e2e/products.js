@@ -60,7 +60,7 @@ describe('Products page:', function() {
         expect( productRow.element( by.css('td.qty') ).getText() ).toBe('10');
         expect( productRow.element( by.css('td.price') ).getText() ).toBe('100');
 
-        //update product name
+        //delete product
         productRow.element( by.css('.btn--danger') ).click().then( function(){
             browser.switchTo().alert().accept().then( function(){
                 expect( element.all( by.css('.cg-notify-message') ).count() ).toBe(1);
