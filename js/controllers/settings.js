@@ -1,11 +1,18 @@
 function SettingsCtrl() {
-	//methods
 
 	//properties
 
+
+	//methods
+
+
 	//init
 
+
 	//logic
+
+
+	//method definition
 }
 
 angular

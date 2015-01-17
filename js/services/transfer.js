@@ -1,19 +1,19 @@
 function TransferService() {
-	
+
 	var data = {};
 
-	function add (key, item) {
+	function add(key, item) {
 		data[key] = item;
 	}
 
-	function get(key){
+	function get(key) {
 		return data[key] || {};
 	}
 
 	return {
-        add: add,
-        get: get
-    };
+		add: add,
+		get: get
+	};
 }
 
 angular

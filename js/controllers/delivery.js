@@ -1,22 +1,14 @@
 function DeliveryCtrl($scope, DeliveryFactory, MapFactory) {
-	
-	function getGmapData(from, to) {
-		var post = {
-			from: from,
-			destinations: destinations.join('|')
-		}
 
-		MapFactory.calculate(post, function(response) {
-			console.log(response);
-		});
-	}
-	
+	//properties
+
+
 	//methods
 	$scope.getGmapData = getGmapData;
 
-	//properties
-	
+
 	//init
+
 
 	//logic
 	var from = 'Ivan Vazov 12';
@@ -28,6 +20,19 @@ function DeliveryCtrl($scope, DeliveryFactory, MapFactory) {
 		'Burgas, Zahari Zograf 8'
 	];
 	//getGmapData(from, to);
+
+
+	//method definition
+	function getGmapData(from, to) {
+		var post = {
+			from: from,
+			destinations: destinations.join('|')
+		}
+
+		MapFactory.calculate(post, function(response) {
+			console.log(response);
+		});
+	}
 }
 
 angular

@@ -1,16 +1,20 @@
 <article class="middle login-container">
-	<form class="login" ng-submit="login(user, pass)">
+	<form class="login" name="loginForm" ng-submit="login(user, pass)">
 		<div ng-show="errorMessage" class="alert alert__error">
 			{{ errorMessage }} 
 		</div>
 
 		<div class="form-row">
 			<label>User</label>
-			<input type="text" ng-model="user" />
+			<input type="text" name="user" ng-model="user" required minlength="4"/>
+			<div class="input-message" ng-messages="loginForm.user.$error">
+				<div ng-message="required" class="alert alert__error">This field is required</div>
+				<div ng-message="minlength" class="alert alert__error">This field is short</div>
+			</div>
 		</div>
 		<div class="form-row">
 			<label>Password</label>
-			<input type="password" ng-model="pass" />
+			<input type="password" name="password" ng-model="pass" required minlength="4" />
 		</div>
 		<div class="form-row">
 			<button class="btn" type="submit">Login</button>

@@ -1,8 +1,32 @@
 function MainCtrl($scope, $location, UserFactory) {
-	
+
+	//properties
+	$scope.nav = _config['nav'];
+	$scope.username = 'Stoyan Delev';
+	$scope.navCurrent = 'home';
+	$scope.isLoginPage = false;
+
+
+	//methods
+	$scope.logOut = logOut;
+	$scope.toggleFullScreen = toggleFullScreen;
+
+
+	//logic
+	var path = function() {
+		return $location.path();
+	};
+	$scope.isLoginPage = path() == '/' ? true : false;
+	$scope.$watch(path, function(newVal, oldVal) {
+		$scope.isLoginPage = newVal == '/' ? true : false;
+		$scope.navCurrent = newVal;
+	});
+
+
+	//method definition
 	function logOut() {
 		UserFactory.logout();
-  		$location.path('/');
+		$location.path('/');
 	}
 
 	function toggleFullScreen() {
@@ -10,35 +34,14 @@ function MainCtrl($scope, $location, UserFactory) {
 		var docEl = doc.documentElement;
 		var requestFullScreen = docEl.requestFullscreen || docEl.webkitRequestFullScreen
 		var cancelFullScreen = doc.exitFullscreen || doc.msExitFullscreen;
-		if (!doc.fullscreenElement && !doc.webkitFullscreenElement ) {
+		if (!doc.fullscreenElement && !doc.webkitFullscreenElement) {
 			requestFullScreen.call(docEl);
 		} else {
 			cancelFullScreen.call(doc);
 		}
 	}
-
-	//properties
-	$scope.nav = _config['nav'];
-	$scope.username = 'Stoyan Delev';
-	$scope.navCurrent = 'home';
-	$scope.isLoginPage = false;
-	
-	//methods
-	$scope.logOut = logOut;
-	$scope.toggleFullScreen = toggleFullScreen;
-
-	//logic
-	var path = function() { 
-		return $location.path();
-	};
-
-	$scope.isLoginPage = path() == '/' ? true : false;
-	$scope.$watch(path, function(newVal, oldVal){
-		$scope.isLoginPage = newVal == '/' ? true : false;
-		$scope.navCurrent = newVal;
-    });
 }
 
 angular
-	.module('delivery')
+  .module('delivery')
 	.controller('MainCtrl', MainCtrl);

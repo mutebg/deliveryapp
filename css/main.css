@@ -173,6 +173,7 @@ body {
   margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px;
+  transition: .5s linear all;
 }
 
 .alert__success {
@@ -197,6 +198,36 @@ body {
   color: #8a6d3b;
   background-color: #fcf8e3;
   border-color: #faebcc;
+}
+
+.input-message {
+  position: relative;
+}
+
+.input-message.ng-active {
+  /* messages are showing */
+}
+
+.input-message.ng-inactive {
+  /* messages are not showing */
+}
+
+.input-message .alert {
+  opacity: 1;
+  transition: .3s linear all;
+  font-size: .8em;
+}
+.input-message .alert.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+.input-message .alert.ng-enter {
+  opacity: 0;
+}
+.input-message .alert.ng-leave {
+  opacity: 1;
+}
+.input-message .alert.ng-leave-active {
+  opacity: 0;
 }
 
 .cg-notify-message {

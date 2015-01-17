@@ -1,11 +1,18 @@
 function HomeCtrl($scope, notify) {
-	//methods
 
 	//properties
 
+
+	//methods
+
+
 	//init
 
+
 	//logic
+
+
+	//method definition
 }
 
 angular

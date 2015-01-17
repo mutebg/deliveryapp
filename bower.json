@@ -1,9 +1,11 @@
 {
-  "name": "DelivetyApp",
+  "name": "DeliveryApp",
   "devDependencies": {
     "jquery": "~2.1.3",
     "angular-route": "1.3.8",
     "angular-resource": "1.3.8",
-    "font-awesome": "FortAwesome/Font-Awesome#~4.2.0"
+    "font-awesome": "FortAwesome/Font-Awesome#~4.2.0",
+    "angular-messages": "1.3.8",
+    "angular-animate": "1.3.8"
   }
 }
